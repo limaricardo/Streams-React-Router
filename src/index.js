@@ -1,9 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { configure } from "@testing-library/react";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-import App from './components/App';
+import App from "./components/App";
+import reducers from "./reducers";
+
+const store = configureStore({ reducer: reducers });
 
 ReactDOM.render(
-    <App />,
-    document.querySelector('#root')
-)
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector("#root")
+);
